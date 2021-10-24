@@ -8,10 +8,11 @@ app.use(
 )
 morgan.token('body', function (request, response) { return JSON.stringify(request.body) })
 
+app.use(express.static('build'))
 app.use(cors())
 app.use(express.json())
 
-const baseUrl = 'http://localhost:3001/api/persons'
+const baseUrl = '/api/persons'
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
