@@ -4,8 +4,12 @@
   "description": "FullStackOpen2021 Course part3 backend ",
   "main": "index.js",
   "scripts": {
+    "build:ui": "rm -rf build && cd ../FullStackOpen2021/part2/thePhonebook  && npm run build --prod && cp -r build ../part3_backend",
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
