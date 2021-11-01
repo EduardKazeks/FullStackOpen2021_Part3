@@ -4,13 +4,14 @@
   "description": "FullStackOpen2021 Course part3 backend ",
   "main": "index.js",
   "scripts": {
-    "build:ui": "rm -rf build && cd ../FullStackOpen2021/part2/thePhonebook  && npm run build --prod && cp -r build ../part3_backend",
+    "build:ui": "rm -rf build && cd ../FullStackOpen2021/part2/thePhonebook  && npm run build --prod && cp -r build ../FullStackOpen2021_Part3",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "deploy": "git push heroku main",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,15 @@
   "dependencies": {
     "axios": "^0.23.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint-plugin-react": "^7.26.1",
     "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "mongoose-unique-validator": "^3.0.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^8.1.0",
     "nodemon": "^2.0.14"
   }
 }
