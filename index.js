@@ -42,10 +42,8 @@ const generateId = () => {
     : 0
   return maxId + 1
 }
-  
-
 // POST REQUEST
-app.post(baseUrl, (request, response, next) => {          // ????
+app.post(baseUrl, (request, response, next) => {    
   const body = request.body
   
   if (!request.body.name || !request.body.number) {
@@ -56,10 +54,9 @@ app.post(baseUrl, (request, response, next) => {          // ????
     name: body.name,
     number: body.number || false,
   })
-  
   person
     .save()
-    .then(savedPerson => savedPerson.toJSON())   // Ask about this method in savedPerson.toJSON() needed or no?
+    .then(savedPerson => savedPerson.toJSON())
     .then(savedAndFormattedPerson => {
       response.json(savedAndFormattedPerson)
     })
@@ -89,7 +86,6 @@ app.put(`${baseUrl}/:id`, (request, response, next) => {
     name: body.name,
     number: body.number,
   }
-  
   Person.findByIdAndUpdate(request.params.id, person, { new: true })
     .then(updatedPerson => {
       response.json(updatedPerson)
@@ -110,7 +106,7 @@ const unknownEndpoint = (request, response) => {
 }
   
 app.use(unknownEndpoint)
-
+// ErrorHandler
 const errorHandler = (error, request, response, next) => {
   console.error(error.message)
   
